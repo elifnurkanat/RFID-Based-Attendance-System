@@ -83,13 +83,13 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
        card_ID[i]=mfrc522.uid.uidByte[i]; //Converts the 4-byte UID to a string after the card is read.
        lcd.clear(); 
 
-       // The if-else cycle, where the ID of the Student list is compared with the ID of the Student being studied:
+       // The if-else cycle where the id of the student list is compared with the id of the student being studied:
        
        if(card_ID[i]==Student1[i]){ 
        Name="Elif Nur KANAT";
        Number=460419063;
        SignedStudent();
-       j=0;//The number that will be sent to the NumCard[j] variable that holds the number of cards.
+       j=0;//This number will be sent to the NumCard[j] variable that holds the number of cards.
       }
       else if(card_ID[i]==Student2[i]){
         Name="Ecenaz ATBAS";
@@ -123,18 +123,18 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
      }
      lcd.clear();
      lcd.setCursor(3,0);
-     lcd.print("KARTINIZI");//This message will appear in the beginning.
+     lcd.print("KARTINIZI");//This message will appear in the beginning (first line)
      lcd.setCursor(3,1); 
-     lcd.print("OKUTUNUZ");
+     lcd.print("OKUTUNUZ");//This message will appear in the beginning (second line)
      
 
 }
       if(NumbCard[j] == 6){ //To find out if a card has been read before:
         lcd.clear();
         lcd.setCursor(3,0);
-        lcd.print("YOKLAMADA");
+        lcd.print("YOKLAMADA"); //first line of the LCD
         lcd.setCursor(3,1); 
-        lcd.print("KAYITLISINIZ");
+        lcd.print("KAYITLISINIZ"); //second line of the LCD
         digitalWrite(RedLed,HIGH);
         digitalWrite(Buzzer,HIGH);
         delay(500);
@@ -143,7 +143,7 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
       }
       else{
       NumbCard[j] = 6;
-      //Excele registration process and Seriport representation
+      //Registration process to the excel and Seriport representation
       Serial.print("DATA,DATE,TIME," + Name);
       Serial.print(",");
       Serial.println(Number); //Sends the student number to the Excel list and seriport.
