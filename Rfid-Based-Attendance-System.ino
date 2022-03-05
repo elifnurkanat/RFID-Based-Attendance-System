@@ -1,57 +1,55 @@
- //460419063 Elif Nur KANAT Elektronik Haberleşme Teknolojisi(İ.Ö) Bitirme Projesi
+ //460419063 Elif Nur KANAT
 
-//Gerekli kütüphaneleri tanımladım.
 #include <LiquidCrystal_I2C_AvrI2C.h>
 #include <SPI.h>
 #include <MFRC522.h> 
 
-#define SDA_PIN 10 //SDA pinini Arduino'da 10.pine atadım.
-#define RST_PIN 9  //RST pinini Arduino'da 9.pine atadım.
-LiquidCrystal_I2C_AvrI2C lcd(0x27,16,2); //Kullandığım LCD Ekranın modelini(0x27) ve kaça kaçlık(16x2) olduğunu tanımladım.
-MFRC522 mfrc522(SDA_PIN, RST_PIN); // Kart okuyucu için Arduino üzerinden SDA ve RST pinlerini tanımladım.
+#define SDA_PIN 10 
+#define RST_PIN 9  
+LiquidCrystal_I2C_AvrI2C lcd(0x27,16,2); 
+MFRC522 mfrc522(SDA_PIN, RST_PIN); 
 
-byte card_ID[4]; //Kullandığım kartların boyutunu (4 byte) bir dizi ile tanımladım, card_ID değişkeni okutulan kartın IDsini tutmak için var.
-//Kullanacağım kartların IDlerini sisteme kaydettim.
+byte card_ID[4]; //I have defined the size (4 bytes) of the cards I use with an array
+
 byte Student1[4]={0xE4,0xD5,0xD9,0x2A};
 byte Student2[4]={0x69,0x18,0x8D,0x9D};
 byte Student4[4]={0xE3,0x44,0x1C,0x07};
 byte Student5[4]={0x33,0xD0,0x97,0x06};
 byte Student6[4]={0x8A,0x7B,0xB1,0x1A};
 
-int NumbCard[6];//Toplam kayıtlı kart sayısını NumCard isimli bir değişken ile kaydettim.
+int NumbCard[6];//I saved the total number of registered cards with a variable called NumCard.
 int j=0;        
 
-//Ledlerin ve Buzzerın Arduino üzerinde gideceği pinleri tanımladım. 
 int const RedLed=6;
 int const GreenLed=5;
 int const Buzzer=8;
 
-String Name;//öğrenci adını tutacak bir değişken tanımladım.
-long Number;//öğrenci numarasını tutacak bir değişken tanımladım.
+String Name;
+long Number;
 
 
 void setup() {
-  lcd.begin(); //LCD ekran başlatıldı.
-  Serial.begin(9600); //Seri iletişim 9600 bit ile başlatıldı.
-  SPI.begin();  // Haberleşme başlatıldı.
-  mfrc522.PCD_Init(); // Kart okuyucu başlatıldı.
+  lcd.begin(); 
+  Serial.begin(9600); 
+  SPI.begin();  
+  mfrc522.PCD_Init(); 
 
-  //Ana mesaj ekrana gönderildi
+ 
   lcd.setCursor(3,0);
   lcd.print("KARTINIZI");
   lcd.setCursor(3,1); 
   lcd.print("OKUTUNUZ");
   
-  Serial.println("LABEL,Tarih,Zaman,Ad SOYAD,Numara");// 4 sütun oluşturuldu ve isimlendirildi.
+  Serial.println("LABEL,Tarih,Zaman,Ad SOYAD,Numara");// 4 columns have been created and named (Date, Time, Name-Surname, Number).
 
-  //Ledler ve buzzer çıkış olarak tanımlandı.
+
   pinMode(RedLed,OUTPUT);
   pinMode(GreenLed,OUTPUT);
   pinMode(Buzzer,OUTPUT);
 
    }
 
-//KayitliOgrenci adında bir void fonsiyon oluşturuldu.
+
 void KayitliOgrenci(){
        lcd.setCursor(0,0);
        lcd.print("IYI DERSLER");
@@ -73,25 +71,25 @@ void KayitsizOgrenci(){
           digitalWrite(Buzzer,LOW);
 }
 void loop() {
-  //Kart okuyucuya okutulacak yeni kartlar için:
+  //For new cards that will be read to the card reader:
    if ( ! mfrc522.PICC_IsNewCardPresent()) {
-  return;//Bir kart okutuluncaya dek bu döngü döner.
+  return;
  }
- // Kart tespit edildiğinde:
+ // When the card is detected:
  if ( ! mfrc522.PICC_ReadCardSerial()) {
-  return;//Herhangi bir kart (tanımlı ya da tanımsız) okutulduğunda okuma-yazma amacıyla seçilir ve aşağıdaki döngüye geçer.
+  return;//When any card (defined or undefined) is read, it is selected for read-write purposes and passes to the following loop.
  }  
 for (byte i = 0; i < mfrc522.uid.size; i++) {
-       card_ID[i]=mfrc522.uid.uidByte[i]; //Kart okunduktan sonra 4 baytlık UID'yi bir dizeye dönüştürür.
-       lcd.clear(); //LCD ekranı temizler.
+       card_ID[i]=mfrc522.uid.uidByte[i]; //Converts the 4-byte UID to a string after the card is read.
+       lcd.clear(); 
 
-       // Okutulan ID ile Öğrenci listesindeki IDlerin karşılaştırıldığı if-else döngüsü:
+       // The if-else cycle, where the ID of the Student list is compared with the ID of the Student being studied:
        
        if(card_ID[i]==Student1[i]){ 
        Name="Elif Nur KANAT";
        Number=460419063;
        KayitliOgrenci();
-       j=0;//Kart sayısını tutan NumCard[j] değişkenine gönderilecek ilk sayı.
+       j=0;//The number that will be sent to the NumCard[j] variable that holds the number of cards.
       }
       else if(card_ID[i]==Student2[i]){
         Name="Ecenaz ATBAS";
@@ -121,17 +119,17 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
       }
       else{
         KayitsizOgrenci();
-        goto cont;//direkt olarak cont: komutuna gider.
+        goto cont;
      }
      lcd.clear();
      lcd.setCursor(3,0);
-     lcd.print("KARTINIZI");//Wlecome Message will appear in the beginning.
+     lcd.print("KARTINIZI");//Welcome Message will appear in the beginning.
      lcd.setCursor(3,1); 
      lcd.print("OKUTUNUZ");
      
 
 }
-      if(NumbCard[j] == 6){ //Bir kartın daha önce okutulup okutulmadığını anlamak için:
+      if(NumbCard[j] == 6){ //To find out if a card has been read before:
         lcd.clear();
         lcd.setCursor(3,0);
         lcd.print("YOKLAMADA");
@@ -145,10 +143,10 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
       }
       else{
       NumbCard[j] = 6;
-      //Excele kayıt işlemi ve Seriportta gösterimi
-      Serial.print("DATA,DATE,TIME," + Name);//Öğrenci adını, tarih ve zamanı Excel listesine ve seriporta gönderir.
+      //Excele registration process and Seriport representation
+      Serial.print("DATA,DATE,TIME," + Name);
       Serial.print(",");
-      Serial.println(Number); //Öğrenci numarasını Excel listesine ve seriporta gönderir.
+      Serial.println(Number); //Sends the student number to the Excel list and seriport.
       digitalWrite(RedLed,LOW);
       digitalWrite(Buzzer,HIGH);
       delay(30);
