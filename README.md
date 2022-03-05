@@ -19,3 +19,30 @@ the course, which gives a warning if the card is read again after reading it onc
 minimize the loss of time experienced in the course attendance control.
 
 Keywords: RFID, attendance, Arduino, wireless technologies, automation
+
+
+Türkçe:
+
+# RFID Teknolojisi ile Yoklama Otomasyonu
+
+Radyo Frekansı ile Tanımlama olarak da bilinen RFID, temel olarak nesnelere ait kimlikleri, 
+bilgileri radyo frekansı ile tanımlamaya yarayan bir teknolojidir. Günümüzde başta tedarik 
+zincirleri olmak üzere, eğitim, güvenlik, sağlık vb. birçok alanda RFID teknolojileri yaygın 
+olarak kullanılmaktadır.
+
+RFID Teknolojisi ile Yoklama Otomasyonu çalışması, temel olarak iki bölümden 
+oluşmaktadır; İlki RFID teknolojisinin de içinde olduğu, otomatik kimlik tanıma sistemlerinin 
+anlatıldığı kısımdır. Burada RFID’ nin en çok karşılaştırıldığı Biyometrik Tanıma 
+Sistemleri’ne ve Barkod’a da yer verilmiştir. İkinci ve ana kısımdan bahsedecek olursak; 
+burada RFID Teknolojileri tarihçesinden başlanılarak temel özellikleri, bileşenleri ve çalışma 
+prensibi de açıklanarak detaylıca anlatılmıştır. Sonrasında ise bu sistemin yoklama 
+otomasyonu olarak nasıl kullanılabileceğinden bahsedilmiş, materyaller, algoritma, devre 
+şeması ve yazılım alt tabanı gösterilmiştir.
+
+Bu çalışmada Arduino UNO kartı ve RFID Teknolojisi kullanılarak bir yoklama otomasyonu 
+geliştirilmiştir. Derse kayıtlı-kayıtsız kart ayrımı yapabilen, kartı bir kere okuttuktan sonra 
+tekrar okutulursa uyarı veren bu sistem, derse devamlılık kontrolünde yaşanan zaman kaybını 
+en aza indirmek amacı ile oluşturulmuştur.
+
+Anahtar Kelimeler: RFID, yoklama, Arduino, Kablosuz Teknolojiler, otomasyon
+
