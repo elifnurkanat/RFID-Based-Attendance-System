@@ -50,7 +50,7 @@ void setup() {
    }
 
 
-void KayitliOgrenci(){
+void SignedStudent(){
        lcd.setCursor(0,0);
        lcd.print("IYI DERSLER");
        lcd.setCursor(0,1);
@@ -59,7 +59,7 @@ void KayitliOgrenci(){
        delay(500);
 }
 
-void KayitsizOgrenci(){
+void UnsignedStudent(){
           digitalWrite(GreenLed,LOW);
           digitalWrite(RedLed,HIGH);
           lcd.setCursor(0,0);
@@ -88,42 +88,42 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
        if(card_ID[i]==Student1[i]){ 
        Name="Elif Nur KANAT";
        Number=460419063;
-       KayitliOgrenci();
+       SignedStudent();
        j=0;//The number that will be sent to the NumCard[j] variable that holds the number of cards.
       }
       else if(card_ID[i]==Student2[i]){
         Name="Ecenaz ATBAS";
         Number=460419025;
-        KayitliOgrenci();
+        SignedStudent();
         j=1;
       }
       else if(card_ID[i]==Student4[i]){
         Name="Hasan KUSE";
         Number=460419029;
-        KayitliOgrenci();
+        SignedStudent();
         j=3;
       }
       else if(card_ID[i]==Student5[i]){
          Name="Ugur HATIM";
          Number=460419021;
-         KayitliOgrenci();
+         SignedStudent();
          j=4;
         
       }
       else if(card_ID[i]==Student6[i]){
          Name="Tugba MEMISOGLU";
          Number=460419033;
-         KayitliOgrenci();
+         SignedStudent();
          j=5;
         
       }
       else{
-        KayitsizOgrenci();
+        UnsignedStudent();
         goto cont;
      }
      lcd.clear();
      lcd.setCursor(3,0);
-     lcd.print("KARTINIZI");//Welcome Message will appear in the beginning.
+     lcd.print("KARTINIZI");//This message will appear in the beginning.
      lcd.setCursor(3,1); 
      lcd.print("OKUTUNUZ");
      
