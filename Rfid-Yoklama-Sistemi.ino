@@ -61,6 +61,7 @@ void KayitliOgrenci(){
        delay(500);
 }
 
+//KayitsizOgrenci adında bir void fonsiyon oluşturuldu.
 void KayitsizOgrenci(){
           digitalWrite(GreenLed,LOW);
           digitalWrite(RedLed,HIGH);
@@ -72,6 +73,7 @@ void KayitsizOgrenci(){
           delay(750);
           digitalWrite(Buzzer,LOW);
 }
+
 void loop() {
   //Kart okuyucuya okutulacak yeni kartlar için:
    if ( ! mfrc522.PICC_IsNewCardPresent()) {
@@ -125,7 +127,7 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
      }
      lcd.clear();
      lcd.setCursor(3,0);
-     lcd.print("KARTINIZI");//Welcome Message will appear in the beginning.
+     lcd.print("KARTINIZI");// Sistem başlatıldığında görünecek mesaj
      lcd.setCursor(3,1); 
      lcd.print("OKUTUNUZ");
      
@@ -163,6 +165,6 @@ lcd.setCursor(3,0);
 lcd.print("KARTINIZI");
 lcd.setCursor(3,1); 
 lcd.print("OKUTUNUZ");
-delay(1000);
+delay(1000); //LCD temizlenerek tekrar kart okutma işlemine hazır hale getirildi.
 
 }
