@@ -88,7 +88,7 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
        lcd.clear(); //LCD ekranı temizler.
 
        // Okutulan ID ile Öğrenci listesindeki IDlerin karşılaştırıldığı if-else döngüsü:
-       
+       //Öğrenci bilgilerinin sisteme işlenmesi
        if(card_ID[i]==Student1[i]){ 
        Name="Elif Nur KANAT";
        Number=460419063;
@@ -121,7 +121,7 @@ for (byte i = 0; i < mfrc522.uid.size; i++) {
          j=5;
         
       }
-      else{
+      else{// yukarıda bilgileri verilen öğrenciler dışında giriş yapılmaya çalışılırsa KayitsizOgrenci() fonksiyonu aktif hale gelir.
         KayitsizOgrenci();
         goto cont;//direkt olarak cont: komutuna gider.
      }
