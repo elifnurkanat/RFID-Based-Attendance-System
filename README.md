@@ -51,5 +51,7 @@ geliştirilmiştir. Derse kayıtlı-kayıtsız kart ayrımı yapabilen, kartı b
 tekrar okutulursa uyarı veren bu sistem, derse devamlılık kontrolünde yaşanan zaman kaybını 
 en aza indirmek amacı ile oluşturulmuştur.
 
+Projede, PLX-DAQ, Arduino IDE tarafından gelen verileri seri port haberleşmesi ile Excel  dosyasına aktarmakta kullanılmaktadır. Kullanılma nedeni, hem Excel dosyasını anlık  olarak kontrol edebilme hem de Excel’in kendi özelliklerinin de avantajları ile  istenen şekilde filtreleme yapılabilmesidir. Ayrıca program tarih, zaman bilgilerini  bilgisayardan çektiğinden, saat modülü kullanılmasına gerek kalmamış, bu da sistemin maliyetini düşürmüştür.
+
 Anahtar Kelimeler: RFID, yoklama, Arduino, Kablosuz Teknolojiler, otomasyon
 
