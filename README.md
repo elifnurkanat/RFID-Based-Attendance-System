@@ -55,3 +55,4 @@ Projede, PLX-DAQ, Arduino IDE tarafından gelen verileri seri port haberleşmesi
 
 Anahtar Kelimeler: RFID, yoklama, Arduino, Kablosuz Teknolojiler, otomasyon
 
+Daha fazla bilgi için benimle iletişime geçebilirsiniz.
