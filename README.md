@@ -18,10 +18,17 @@ technology. This system, which can distinguish between registered and unregister
 the course, which gives a warning if the card is read again after reading it once, was created to 
 minimize the loss of time experienced in the course attendance control.
 
+In this project, PLX-DAQ is used by Arduino IDE to transfer incoming data to Excel file via serial 
+port communication. The reason it is used is that it can both control the Excel file instantaneously
+and filter it as desired with the advantages of Excel's own features. In addition, since the program 
+pulls date and time information from the computer, there is no need to use the clock module, which 
+reduces the cost of the system.
+
 Keywords: RFID, attendance, Arduino, wireless technologies, automation
 
+Contact me for more information.
 
-Türkçe:
+Turkish:
 
 # RFID Teknolojisi ile Yoklama Otomasyonu
 
